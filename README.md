@@ -6,5 +6,5 @@ Article link : https://www.mkyong.com/spring-boot/spring-rest-hello-world-exampl
 ```
 $ mvn spring-boot:run
 
-$ curl -v localhost:8080/books
+$ curl -v localhost:8080/api/books
 ```
