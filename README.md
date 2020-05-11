@@ -18,5 +18,12 @@ http://localhost:8080/api/actuator/health
 
 https://www.javadevjournal.com/spring-boot/spring-boot-actuator-with-prometheus/
 
+Needed to add the following to the application.properties to enable prometheus
+
+management.endpoint.metrics.enabled=true
+management.endpoints.web.exposure.include=*
+management.endpoint.prometheus.enabled=true
+management.metrics.export.prometheus.enabled=true
+
 
 
