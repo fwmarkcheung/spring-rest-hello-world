@@ -23,7 +23,9 @@ scrape_configs:
   - job_name: 'spring-actuator'
    
     # Actuator end point to collect the data. 
-    metrics_path: '/api/actuator/prometheus'
+    # metrics_path: '/api/actuator/prometheus'
+    # Change to adopt OC monitoring
+    metrics_path: '/metrics'
 
     #How frequently to scape the data from the end point
     scrape_interval: 5s
