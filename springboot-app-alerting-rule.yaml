@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: springboot-app-alert
+  namespace: springboot-prometheus
+spec:
+  groups:
+  - name: springboot-app-example
+    rules:
+    - alert: JDBCCountAlert
+      expr: jdbc_connections_min{name="dataSource",job="springboot-prometheus"} > 1
