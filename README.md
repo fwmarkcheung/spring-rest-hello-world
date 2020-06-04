@@ -47,7 +47,24 @@ oc apply -f springboot-service-monitor.yml
  oc apply -f springboot-app-alerting-rule.yam
 
 
+-------------------------------------------
+Create a custom prometheus in your own project
+--------------------------------------------
+1. Create prometheus from the docker image:
 
+oc new-app prom/prometheus
+
+2. Configure prometheus to scrape the spring-boot app (no service monitor is needed.  Service monitor is used for the Prometheus instance integrated with OCP)
+
+oc apply -f prometheus-configmap.yml
+oc set volume dc/prometheus --add --name=prometheus-config --mount-path=/etc/prometheus/ --configmap-name=prometheus-config
+
+3. Create a route to prometheus:
+
+oc expose svc/prometheus
+
+
+https://www.robustperception.io/openshift-and-prometheus
 
 --------------------------------
 Default actuator link is disable.  
@@ -68,3 +85,7 @@ http://localhost:8080/api/actuator/prometheus
 https://www.javadevjournal.com/spring-boot/spring-boot-actuator-with-prometheus/
 
 Needed to add the management properties to the application.properties to enable prometheus
+
+
+
+
